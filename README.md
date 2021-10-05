@@ -22,12 +22,12 @@ The objective of the game is to win as much of everyone else's money as possible
 ## Rules
 
 ### 1) While watching a baseball game, participants will pass the cup in sequential order from `player[0]` to `player[-1]`
-  - Players numbers are typically determined by how they are sitting at baseball game, with the cup starting at one end and moving down the line in ascending order
+  - Players numbers are typically determined by how they are sitting in the stands at the baseball game, going in whatever order makes the most sense when passing a cup full of money around
   - Whenever a player is holding a cup it is their `turn`
   - The cup goes back to `player[0]` after `player[-1]`'s `turn`
 
 ### 2) The cup is passed to the next player each time there is a new at-bat in the baseball game (`new at-bat === new turn`)
-When watching a baseball game in person you might think that because there is a new batter at the plate that it is a new at-bat and thus it is a new `turn`, however that is not always the case. In baseball, 2 or more batters can combine to complete 1 at-bat if `batter[0]` is injured during an at-bat or a manager decides to substitute `batter[i+1]` in the middle of an at-bat (though this is not common). In _this_ game, an at-bat is over when one of the following conditions are met in the actual baseball game (note that these conditions are more inclusive than the way an at-bat is scored in the actual game of baseball, see rules for more):
+When watching a baseball game in person you might think that because there is a new batter at the plate that it is a new at-bat and thus it is a new `turn`, however that is not always the case. In baseball, 2 or more batters can combine to complete 1 at-bat if `batter[0]` is injured during an at-bat or a manager decides to substitute `batter[i+1]` in the middle of an at-bat (though this is not common). In _this_  baseball game, an at-bat is over when one of the following conditions are met in the actual baseball game (note that these conditions are more inclusive than the way an at-bat is [scored](https://www.mlb.com/official-information/basics/score) in the actual game of baseball, see rules for more):
   * Batter gets a base hit (single, double, triple, or home run)
   * Batter reaches base on error
   * Batter reaches base on a fielder's choice
@@ -36,7 +36,7 @@ When watching a baseball game in person you might think that because there is a 
   * Batter hits a sacrifice fly or sacrifice bunt
 
 ### 3) Upon receiving the cup, players must "`ante`" a dollar into the cup
-This is not a mutable wager, so players deposit exactly $1 each time it is their `turn` to hold the cup
+This is an immutable wager, players deposit exactly $1 into the cup each time it is their `turn`
 
 ### 4) Based on the ending condition of a player's `turn` (see conditions in step 2 above), the player may have the opportunity to remove money from the cup and back into their wallet before passing the cup to `player[i+1]`.
 The amount of money a player can add or remove to or from the cup is based on the [Scoring](#scoring) below
@@ -47,17 +47,17 @@ They have the opportunity to remove dollars from the cup, assuming there is mone
 ### 6) The game ends when the baseball game ends
 Anyone with money left in their wallet is a winner in my book, but all winners are not necessarily made equal...
 
-Obviously players don't really have any control over whether they win or lose, that all depends on the actual baseball game itself, so the game is really about camaraderie, friendship, and the love of baseball. If you're fiscally aware, think about this: the more people you play with the less money you lose, because the fewer `turn`s you have (and thus less `ante`'ing). So make a lot of friends, finish a beer, save the cup, ask some poor cashier to break a twenty dollar bill into singles, and get down to a ballpark near you.
+Obviously players don't really have any control over whether they win or lose, that all depends on the actual baseball game itself, so the game is really about camaraderie, friendship, and the love of baseball. If you're fiscally conscious, think about this: _the more people you play with the less money you lose_, because you will have fewer `turn`s (and thus less `ante`'ing). So make a lot of friends, finish a beer, save the cup, ask some poor cashier to break a twenty dollar bill into singles, and get down to a ballpark near you.
 
 
 ## Scoring
 Only the player holding the cup can add or remove money to or from the cup. The amount that is added or removed is as follows:
-* Add $1 to the cup at the start of a `turn`
-* Remove $1 from the cup for any of the following conditions:
+* **Add $1** to the cup at the start of a `turn`
+* **Remove $1** from the cup for any of the following conditions:
   * Single
   * Walk
   * HBP
   * RBI (each RBI is worth $1, batters can get up to 4 RBIs in one at-bat)
-* Remove $2 from the cup for a double
-* Remove $3 from the cup for a triple
-* Remove every dollar in the cup for a home run
+* **Remove $2** from the cup for a double
+* **Remove $3** from the cup for a triple
+* **Remove every dollar in the cup** for a home run
