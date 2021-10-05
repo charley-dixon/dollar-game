@@ -1,8 +1,8 @@
 # The Baseball Dollar Game ⚾️💸
 
-To the people who say that baseball is boring, I say you just haven't found a way to make it fun to watch yet. This is a game that my friend taught me in the stands of a Colorado Rockies baseball game. While I believe the ballpark is the only place this game is truly meant to be played, I realized it follows logic that made for a great web development project so here we are.
+To the people who say that baseball is boring, I say you just haven't found a way to make it fun to watch yet. This is a game that my friend taught me in the stands of a Colorado Rockies baseball game. While I believe the ballpark is the only place this game is truly meant to be played, I realized it has logic that makes for a great web development project so let's see where this goes. I intend to take the basic rules described below, and build that into a script that controls an HTML interface for an online game that you can play with friends. So while I may take some creative liberties as this project goes on, the following description will serve as the foundation for this project.
 
-Admittedly, this game does require that its participants understand some of the basic rules and definitions of baseball. For anyone who may be unfamiliar with the sport of baseball, I encourage you to [watch this 3 minute video](https://youtu.be/skOsApsF0jQ) before reading further.
+_This game does require that its participants understand the basic rules and definitions of baseball (Baseball 101 if you will). For anyone who may be unfamiliar with the sport of baseball, I encourage you to [watch this 3 minute video](https://youtu.be/skOsApsF0jQ) before reading further._
 
 
 ## Setup
