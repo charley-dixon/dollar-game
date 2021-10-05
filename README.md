@@ -44,7 +44,7 @@ The amount of money a player can add or remove to or from the cup is based on th
 ### 5) If a player has zero dollars at the end of their `turn` they are still in the game
 They have the opportunity to remove dollars from the cup, assuming there is money in the cup when it is their `turn`, but a running tab is also kept on the player's `ante` that must be repaid before the player can begin removing dollars again.
 
-### 6) The game ends when the final at-bat of the baseball game ends.
+### 6) The game ends when the baseball game ends.
 Anyone with money left in their wallet is a winner in my book, but all winners are not necessarily made equal...
 
 Obviously players don't really have any control over whether they win or lose, so the game is really about camaraderie and friendship. If you're fiscally aware, think about this: the more people you play with the less money you lose, because the fewer `turn`s you have (and thus less `ante`'ing). So make a lot of friends, finish a beer, save the cup, ask some poor cashier to break a twenty dollar bill into singles, and get down to a ballpark near you.
