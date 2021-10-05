@@ -68,7 +68,20 @@ As the cup moves through the order, the amount of money in the cup will grow and
 * **Remove $3** from the cup for a triple
 * **Remove every dollar in the cup** for a home run
 
+
 ### Accounting
 When it comes to accounting for these dollars, leave your traditional accounting brain at the gates. In the event that a player runs out of money, they can elect to be debited the dollar owed on their `turn` to stay in the game. However, that dollar is not credited anywhere - so it simply serves as a debt that the individual player must repay before they can begin removing money from the cup again. For example, if a player has no money and the cup holds $1 at the beginning of their `turn` (leftover from the prior player's `turn`), and the result of the at-bat is that they can remove $1 from the cup, then the player's $1 debt is cleared but they would simply leave the physical dollar in the cup. The player holding the cup would need the conditions to add up to at least $2 to take the dollar from the cup. Other players can also choose to loan dollars to people to keep the cash flowing for all, otherwise the player in debt must hope for some extra base hits and RBIs when it is their `turn`.
 
 In the reverse situation, when a player has the opportunity to remove more money from the cup than is actually in it, there is no accounting for dollars "owed" to the player. For example, if there is only $1 in the cup and the at-bat results in a double, the player can only add $1 to their wallet and effectively "miss out" on an additional $1. I think this odd method of accounting embodies the true spirit of the game by making exceptions to traditional accounting methods for the sake of friendship and baseball.
+
+
+## Resources & Lessons Learned
+
+This is an ongoing list that I will update as the project moves along:
+
+
+## Programming Decisions
+
+As the project goes along, I am going to keep track of significant decisions made when I either added or altered the foundational rules of play:
+* I've included a user input to allow users to play for more or less than $1 per `turn`
+  * While I don't think that players should be allowed to add more or less money when it is their `turn`, I do think that people should be able to play with more money if that would make things more interesting.
