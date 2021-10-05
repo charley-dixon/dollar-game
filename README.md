@@ -51,9 +51,7 @@ Obviously players don't really have any control over whether they win or lose, t
 
 
 ## Scoring
-Only the player holding the cup can add or remove money to or from the cup. Players can only remove money that is in the cup, but they can add money that they don't have. For example, if there is only $1 in the cup and the at-bat results in a double, the player can only add that $1 to their wallet. When _adding_ money to the cup, players are debited $1 if they are out of dollars to put in the cup when it is their `turn`. I think this embodies the true spirit of the game, because ultimately you want everyone to be a part of it, but they don't call it "The Baseball Dollar Game" for no reason.
-
-The amount that is added or removed is as follows:
+Only the player holding the cup can add or remove money to or from the cup. The amount that is added or removed is as follows:
 * **Add $1** to the cup at the start of a `turn`
 * **Remove $1** from the cup for any of the following conditions:
   * Single
@@ -63,3 +61,9 @@ The amount that is added or removed is as follows:
 * **Remove $2** from the cup for a double
 * **Remove $3** from the cup for a triple
 * **Remove every dollar in the cup** for a home run
+
+When it comes to accounting for these dollars, leave your traditional accounting brain at the gates. In the event that a player run out of money, they can elect to be debited the dollar owed on their `turn` to stay in the game. However, that dollar is not credited anywhere - so it simply serves as a debt that the individual player must repay before they can begin removing money from the cup again. For example, if a player has no money and the cup holds $1 at the beginning of their `turn` from another player adding it to the cup, the player holding the cup would need at least a double to take the dollar from the cup. If the batter meets a condition to remove $1 from the cup, then the player's $1 debt is cleared but they would simply leave the physical dollar in the cup. Other players can also choose to loan dollars to people to keep the cash flowing for all, otherwise the player in debt must hope for some extra base hits and RBIs when it is their `turn`.
+
+In the reverse situation, when a player has the opportunity to remove more money from the cup than is actually in it, there is no accounting for dollars "owed" to the player. For example, if there is only $1 in the cup and the at-bat results in a double, the player can only add $1 to their wallet and effectively "miss out" on an additional $1.
+
+I think this odd method of accounting embodies the true spirit of the game by making exceptions to traditional accounting methods for the sake of keeping people involved.
