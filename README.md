@@ -51,7 +51,9 @@ Obviously players don't really have any control over whether they win or lose, t
 
 
 ## Scoring
-Only the player holding the cup can add or remove money to or from the cup. The amount that is added or removed is as follows:
+Only the player holding the cup can add or remove money to or from the cup. Players can only remove money that is in the cup, but they can add money that they don't have. For example, if there is only $1 in the cup and the at-bat results in a double, the player can only add that $1 to their wallet. When _adding_ money to the cup, players are debited $1 if they are out of dollars to put in the cup when it is their `turn`. I think this embodies the true spirit of the game, because ultimately you want everyone to be a part of it, but they don't call it "The Baseball Dollar Game" for no reason.
+
+The amount that is added or removed is as follows:
 * **Add $1** to the cup at the start of a `turn`
 * **Remove $1** from the cup for any of the following conditions:
   * Single
