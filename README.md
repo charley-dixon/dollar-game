@@ -51,7 +51,7 @@ Obviously players don't really have any control over whether they win or lose, t
 
 
 ## Scoring
-As the cup moves through the order, the amount of money in the cup will grow and shrink depending on the results of the at-bats in the baseball game (details outlined below). Only the player holding the cup can add or remove money to or from the cup. Money can only be added/removed based on the conditions below (the cup stays filled from one inning of the baseball game to the next):
+As the cup moves through the order, the amount of money in the cup will grow and shrink depending on the results of the at-bats in the baseball game (details outlined below). Only the player holding the cup can add or remove money to or from the cup. Money can only be added/removed based on the conditions below (the cup stays filled between innings):
 
 * **Add $1** to the cup at the start of a `turn`
 * **Remove $1** from the cup for any of the following conditions:
