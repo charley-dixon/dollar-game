@@ -16,15 +16,15 @@ To play the game you need the following resources:
 
 ## Objective
 
-The objective of the game is to win as much of everyone else's money as possible and , conversely, not lose any money either. It is possible to lose more than you brought.
+The objective of the game is to win as much of everyone else's money as possible and ,conversely, not lose any money either. It is possible to lose more than you brought.
 
 
 ## Gameplay
 
-1. While watching a baseball game, participants will pass the cup in sequential order from player[0] to player[-1]
-  * Players numbers are typically determined by how they are sitting at baseball game, with the cup starting at one end and moving down the line in ascending order
-  * Whenever a player is holding a cup it is their "turn"
-  * The cup goes back to player[0] after player[-1]'s turn
+### 1) While watching a baseball game, participants will pass the cup in sequential order from player[0] to player[-1]
+  - Players numbers are typically determined by how they are sitting at baseball game, with the cup starting at one end and moving down the line in ascending order
+  - Whenever a player is holding a cup it is their "turn"
+  - The cup goes back to player[0] after player[-1]'s turn
 2. The cup is passed to the next player each time there is a new at-bat in the baseball game (new at-bat === new turn)
   * When watching a baseball game you might think that because there is a new batter at the plate that it is a new at-bat and thus it is a new turn, however that is not always the case. In baseball 2 or more batters can combine to complete 1 at-bat if batter[0] is injured during an at-bat or a manager decides to substitute batter[i+1] in the middle of an at-bat (though this is not common). In this game, an at-bat is ended by one of the following conditions (note that these conditions are more inclusive than the way an at-bat is scored in the actual game of baseball, see rules for more):
     * Batter gets a base hit (single, double, triple, or home run)
