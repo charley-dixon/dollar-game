@@ -86,6 +86,8 @@ In the reverse situation, when a player has the opportunity to remove more money
 ## Resources & Lessons Learned
 
 This is an ongoing list that I will update as the project moves along:
+* Getters and setters allow us to dynamically change the values of object properties
+  * I was unable to get the various scoring results to update on their own. For example, if I changed the `ante` to be $5 instead of $1 I want that value to automatically update in my scoring object.
 
 
 ## Programming Decisions
@@ -93,3 +95,8 @@ This is an ongoing list that I will update as the project moves along:
 As the project goes along, I am going to keep track of significant decisions made when I either added or altered the foundational rules of play:
 * I've included a user input to allow users to play for more or less than $1 per `turn`
   * While I don't think that players should be allowed to add more or less money when it is their `turn`, I do think that people should be able to play with more money if that would make things more interesting.
+* Home runs are defined as a Getter
+  * This allows me to get the value of a home run by calling `scoring.homeRun` instead of `scoring.homeRun()`
+* I am going to create different scripts for the setup & rules/gameplay to keep my code organized
+* Order will be randomized since players are not actually sitting at a baseball game
+  * This keeps the game fair since the order is probably the most important element of luck
