@@ -2,7 +2,7 @@
 
 To the people who say that baseball is boring, I say you just haven't found a way to make it fun to watch yet. This is a game that my friend taught me in the stands of a Colorado Rockies baseball game, and I believe that is where it is truly meant to be played. However, as I wrapped my head around the logic of the game I thought it would make a great programming project so here we are.
 
-Admittedly, this game does require that its participants understand the fundamental definitions and gameplay of a baseball game. For anyone who may be unfamiliar with the sport of baseball, I encourage you to [watch this 3 minute video](https://youtu.be/skOsApsF0jQ) before reading further.
+Admittedly, this game does require that its participants understand some of the basic rules and definitions of baseball. For anyone who may be unfamiliar with the sport of baseball, I encourage you to [watch this 3 minute video](https://youtu.be/skOsApsF0jQ) before reading further.
 
 
 ## Game Setup
@@ -19,29 +19,35 @@ To play the game you need the following resources:
 The objective of the game is to win as much of everyone else's money as possible and, conversely, not lose any money either. Be aware that it is possible to lose more money than you bring to the ballpark.
 
 
-## Gameplay
+## Rules
 
 ### 1) While watching a baseball game, participants will pass the cup in sequential order from `player[0]` to `player[-1]`
   - Players numbers are typically determined by how they are sitting at baseball game, with the cup starting at one end and moving down the line in ascending order
   - Whenever a player is holding a cup it is their `turn`
   - The cup goes back to `player[0]` after `player[-1]`'s `turn`
+
 ### 2) The cup is passed to the next player each time there is a new at-bat in the baseball game (`new at-bat === new turn`)
-  - When watching a baseball game you might think that because there is a new batter at the plate that it is a new at-bat and thus it is a new `turn`, however that is not always the case. In baseball 2 or more batters can combine to complete 1 at-bat if `batter[0]` is injured during an at-bat or a manager decides to substitute batter[i+1] in the middle of an at-bat (though this is not common). In this game, an at-bat is ended by one of the following conditions (note that these conditions are more inclusive than the way an at-bat is scored in the actual game of baseball, see rules for more):
-    * Batter gets a base hit (single, double, triple, or home run)
-    * Batter reaches base on error
-    * Batter reaches base on a fielder's choice
-    * Batter is ruled out
-    * Batter walks to first or is hit by a pitch (HBP)
-    * Batter hits a sacrifice fly or sacrifice bunt
-### 3) Upon receiving the cup, players must "ante" a dollar into the cup
-  - This is not a mutable wager, so players deposit exactly $1 each time it is their `turn` to hold the cup
+When watching a baseball game you might think that because there is a new batter at the plate that it is a new at-bat and thus it is a new `turn`, however that is not always the case. In baseball 2 or more batters can combine to complete 1 at-bat if `batter[0]` is injured during an at-bat or a manager decides to substitute batter[i+1] in the middle of an at-bat (though this is not common). In this game, an at-bat is ended by one of the following conditions (note that these conditions are more inclusive than the way an at-bat is scored in the actual game of baseball, see rules for more):
+  * Batter gets a base hit (single, double, triple, or home run)
+  * Batter reaches base on error
+  * Batter reaches base on a fielder's choice
+  * Batter is ruled out
+  * Batter walks to first or is hit by a pitch (HBP)
+  * Batter hits a sacrifice fly or sacrifice bunt
+
+### 3) Upon receiving the cup, players must "`ante`" a dollar into the cup
+This is not a mutable wager, so players deposit exactly $1 each time it is their `turn` to hold the cup
+
 ### 4) Based on the ending condition of a player's `turn` (see conditions in step 2 above), the player may have the opportunity to remove money from the cup and back into their wallet.
-  - The amount of money a player can add or remove to or from the cup is based on the [Scoring](#scoring) below
+The amount of money a player can add or remove to or from the cup is based on the [Scoring](#scoring) below
+
 ### 5) When a player's `turn` ends with $0 they are still in the game,
+
 ### 6) Regardless of how many players are left, the game ends when the final at-bat of the baseball game ends
+
 ### 7) Anyone with money left in their wallet is a winner in my book, but all winners are not necessarily made equal
 
-Obviously players don't really have any control over whether they win or lose, so the game is really about camaraderie and friendship. If you're fiscally aware, think about this: the more people you play with the less money you lose, because the fewer `turn`s you have (and thus less ante'ing). So make a lot of friends, finish a beer, save the cup, ask some poor cashier to break a twenty dollar bill into singles, and get down to a ballpark near you.
+Obviously players don't really have any control over whether they win or lose, so the game is really about camaraderie and friendship. If you're fiscally aware, think about this: the more people you play with the less money you lose, because the fewer `turn`s you have (and thus less `ante`'ing). So make a lot of friends, finish a beer, save the cup, ask some poor cashier to break a twenty dollar bill into singles, and get down to a ballpark near you.
 
 
 ## Scoring
