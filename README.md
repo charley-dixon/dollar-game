@@ -1,6 +1,6 @@
 # The Baseball Dollar Game ⚾️💸
 
-To the people who say that baseball is boring, I say you just haven't found a way to make it fun to watch yet. This is a game that my friend taught me in the stands of a Colorado Rockies baseball game. While I believe the ballpark is the only place this game is truly meant to be played, I realized it has logic that makes for a great web development project so let's see where this goes. I intend to take the basic rules described below, and build that into a script that controls an HTML interface for an online game that you can play with friends. So while I may take some creative liberties as this project goes on, the following description will serve as the foundation for this project.
+To the people who say that baseball is boring, I say you just haven't found a way to make it fun to watch yet. This is a game that my friend taught me in the stands of a Colorado Rockies baseball game. While I believe the ballpark is the only place this game is truly meant to be played, I realized it has logic and rules that make for a great object oriented programming project so let's see where this goes. I intend to take the basic rules described below, and build that into a script that controls an HTML interface for an online game that you can play with friends. So while I may take some creative liberties as this project goes on, the following description will serve as the foundation for this project.
 
 _This game does require that its participants understand the basic rules and definitions of baseball (Baseball 101 if you will). For anyone who may be unfamiliar with the sport of baseball, I encourage you to [watch this 3 minute video](https://youtu.be/skOsApsF0jQ) before reading further._
 
@@ -22,7 +22,7 @@ The objective of the game is to win as much of everyone else's money as possible
 ## Rules
 
 ### 1) While watching a baseball game, participants will pass the cup in sequential order from `player[0]` to `player[-1]`
-  - Players numbers are typically determined by how they are sitting in the stands at the baseball game, going in whatever order makes the most sense when passing a cup full of money around
+  - The order is typically determined by how players are sitting in the stands at the baseball game, going in whatever order makes the most sense when passing a cup full of money around
   - Whenever a player is holding a cup it is their `turn`
   - The cup goes back to `player[0]` after `player[-1]`'s `turn`
 
@@ -42,7 +42,7 @@ This is an immutable wager, players deposit exactly $1 into the cup each time it
 The amount of money a player can add or remove to or from the cup is based on the [Scoring](#scoring) below
 
 ### 5) If a player has zero dollars at the end of their `turn` they are still in the game
-They have the opportunity to remove dollars from the cup, assuming there is money in the cup when it is their `turn`, but a running tab is also kept on the player's `ante` that must be repaid before the player can begin removing dollars again.
+They have the opportunity to remove dollars from the cup, assuming there is money in the cup when it is their `turn`, but a running tab is also kept on the player's `ante` that must be repaid before the player can begin removing dollars again. See [Accounting](#accounting) for a more in-depth explanation of how this is accounted for.
 
 ### 6) The game ends when the baseball game ends
 Anyone with money left in their wallet is a winner in my book, but all winners are not necessarily made equal...
@@ -51,7 +51,8 @@ Obviously players don't really have any control over whether they win or lose, t
 
 
 ## Scoring
-Only the player holding the cup can add or remove money to or from the cup. The amount that is added or removed is as follows:
+As the cup moves through the order, the amount of money in the cup will grow and shrink depending on the results of the at-bats in the baseball game (details outlined below). Only the player holding the cup can add or remove money to or from the cup, and it can only be added/removed based on the conditions below (the cup stays filled from one inning of the baseball game to the next):
+
 * **Add $1** to the cup at the start of a `turn`
 * **Remove $1** from the cup for any of the following conditions:
   * Single
@@ -62,6 +63,7 @@ Only the player holding the cup can add or remove money to or from the cup. The 
 * **Remove $3** from the cup for a triple
 * **Remove every dollar in the cup** for a home run
 
-When it comes to accounting for these dollars, leave your traditional accounting brain at the gates. In the event that a player run out of money, they can elect to be debited the dollar owed on their `turn` to stay in the game. However, that dollar is not credited anywhere - so it simply serves as a debt that the individual player must repay before they can begin removing money from the cup again. For example, if a player has no money and the cup holds $1 at the beginning of their `turn` (leftover from the prior player's `turn`), and the result is that they can remove $1 from the cup, then the player's $1 debt is cleared but they would simply leave the physical dollar in the cup. The player holding the cup would need the conditions to add up to at least $2 to take the dollar from the cup. Other players can also choose to loan dollars to people to keep the cash flowing for all, otherwise the player in debt must hope for some extra base hits and RBIs when it is their `turn`.
+### Accounting
+When it comes to accounting for these dollars, leave your traditional accounting brain at the gates. In the event that a player runs out of money, they can elect to be debited the dollar owed on their `turn` to stay in the game. However, that dollar is not credited anywhere - so it simply serves as a debt that the individual player must repay before they can begin removing money from the cup again. For example, if a player has no money and the cup holds $1 at the beginning of their `turn` (leftover from the prior player's `turn`), and the result of the at-bat is that they can remove $1 from the cup, then the player's $1 debt is cleared but they would simply leave the physical dollar in the cup. The player holding the cup would need the conditions to add up to at least $2 to take the dollar from the cup. Other players can also choose to loan dollars to people to keep the cash flowing for all, otherwise the player in debt must hope for some extra base hits and RBIs when it is their `turn`.
 
 In the reverse situation, when a player has the opportunity to remove more money from the cup than is actually in it, there is no accounting for dollars "owed" to the player. For example, if there is only $1 in the cup and the at-bat results in a double, the player can only add $1 to their wallet and effectively "miss out" on an additional $1. I think this odd method of accounting embodies the true spirit of the game by making exceptions to traditional accounting methods for the sake of friendship and baseball.
