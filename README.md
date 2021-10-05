@@ -4,6 +4,14 @@ To the people who say that baseball is boring, I say you just haven't found a wa
 
 _This game does require that its participants understand the basic rules and definitions of baseball (Baseball 101 if you will). For anyone who may be unfamiliar with the sport of baseball, I encourage you to [watch this 3 minute video](https://youtu.be/skOsApsF0jQ) before reading further._
 
+### Contents
+[Setup](#setup)
+[Objective](#objective)
+[Rules](#rules)
+[Scoring](#scoring)
+[Resources & Lessons Learned](#resources-&-lessons-learned)
+[Programming Decisions](#programming-decisions)
+
 
 ## Setup
 
