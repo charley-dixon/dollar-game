@@ -1,22 +1,22 @@
 # The Baseball Dollar Game
 
-To the people who say that baseball is boring, I say you just haven't found a way to make it fun to watch yet. This is a game that my friend taught me in the stands of a Colorado Rockies baseball game, and I believe that is where it is truly meant to be played. However, as I wrapped my head around the logic of the game I thought it would make a great programming project so here we are.
+To the people who say that baseball is boring, I say you just haven't found a way to make it fun to watch yet. This is a game that my friend taught me in the stands of a Colorado Rockies baseball game. While I believe the ballpark is the only place this game is truly meant to be played, I realized it follows logic that made for a great web development project so here we are.
 
 Admittedly, this game does require that its participants understand some of the basic rules and definitions of baseball. For anyone who may be unfamiliar with the sport of baseball, I encourage you to [watch this 3 minute video](https://youtu.be/skOsApsF0jQ) before reading further.
 
 
 ## Game Setup
 
-To play the game you need the following resources:
+To play the game you need the following:
 * 1 baseball game
-* At least 2 spectators who are all willing to lose some money in exchange for a grand 'ole time with friends
+* At least 2 spectators who are willing to lose a few bucks having a grand 'ole time with friends
 * 1 cup
 * A lot of $1 bills (each player should bring their own)
 
 
 ## Objective
 
-The objective of the game is to win as much of everyone else's money as possible and, conversely, not lose any money either. Be aware that it is possible to lose more money than you bring to the ballpark.
+The objective of the game is to win as much of everyone else's money as possible and, conversely, not lose any of your own. Be aware that it is possible to lose more money than you bring to the ballpark.
 
 
 ## Rules
@@ -44,7 +44,7 @@ The amount of money a player can add or remove to or from the cup is based on th
 ### 5) If a player has zero dollars at the end of their `turn` they are still in the game
 They have the opportunity to remove dollars from the cup, assuming there is money in the cup when it is their `turn`, but a running tab is also kept on the player's `ante` that must be repaid before the player can begin removing dollars again.
 
-### 6) The game ends when the baseball game ends.
+### 6) The game ends when the baseball game ends
 Anyone with money left in their wallet is a winner in my book, but all winners are not necessarily made equal...
 
 Obviously players don't really have any control over whether they win or lose, that all depends on the actual baseball game itself, so the game is really about camaraderie, friendship, and the love of baseball. If you're fiscally aware, think about this: the more people you play with the less money you lose, because the fewer `turn`s you have (and thus less `ante`'ing). So make a lot of friends, finish a beer, save the cup, ask some poor cashier to break a twenty dollar bill into singles, and get down to a ballpark near you.
