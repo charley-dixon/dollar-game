@@ -27,7 +27,7 @@ The objective of the game is to win as much of everyone else's money as possible
   - The cup goes back to `player[0]` after `player[-1]`'s `turn`
 
 ### 2) The cup is passed to the next player each time there is a new at-bat in the baseball game (`new at-bat === new turn`)
-When watching a baseball game you might think that because there is a new batter at the plate that it is a new at-bat and thus it is a new `turn`, however that is not always the case. In baseball 2 or more batters can combine to complete 1 at-bat if `batter[0]` is injured during an at-bat or a manager decides to substitute batter[i+1] in the middle of an at-bat (though this is not common). In this game, an at-bat is ended by one of the following conditions (note that these conditions are more inclusive than the way an at-bat is scored in the actual game of baseball, see rules for more):
+When watching a baseball game in person you might think that because there is a new batter at the plate that it is a new at-bat and thus it is a new `turn`, however that is not always the case. In baseball, 2 or more batters can combine to complete 1 at-bat if `batter[0]` is injured during an at-bat or a manager decides to substitute `batter[i+1]` in the middle of an at-bat (though this is not common). In _this_ game, an at-bat is over when one of the following conditions are met in the actual baseball game (note that these conditions are more inclusive than the way an at-bat is scored in the actual game of baseball, see rules for more):
   * Batter gets a base hit (single, double, triple, or home run)
   * Batter reaches base on error
   * Batter reaches base on a fielder's choice
