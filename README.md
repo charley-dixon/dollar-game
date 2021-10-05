@@ -9,7 +9,7 @@ _This game does require that its participants understand the basic rules and def
 * [Objective](#objective)
 * [Rules](#rules)
 * [Scoring](#scoring)
-* [Resources & Lessons Learned](#resources-&-lessons-learned)
+* [Resources & Lessons Learned](#resources--lessons-learned)
 * [Programming Decisions](#programming-decisions)
 
 
