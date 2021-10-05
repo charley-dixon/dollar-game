@@ -26,6 +26,7 @@ The objective of the game is to win as much of everyone else's money as possible
   - Whenever a player is holding a cup it is their `turn`
   - The cup goes back to `player[0]` after `player[-1]`'s `turn`
 
+
 ### 2) The cup is passed to the next player each time there is a new at-bat in the baseball game (`new at-bat === new turn`)
 When watching a baseball game in person you might think that because there is a new batter at the plate that it is a new at-bat and thus it is a new `turn`, however that is not always the case. In baseball, 2 or more batters can combine to complete 1 at-bat if `batter[0]` is injured during an at-bat or a manager decides to substitute `batter[i+1]` in the middle of an at-bat (though this is not common). In _this_  baseball game, an at-bat is over when one of the following conditions are met in the actual baseball game (note that these conditions are more inclusive than the way an at-bat is [scored](https://www.mlb.com/official-information/basics/score) in the actual game of baseball, see rules for more):
   * Batter gets a base hit (single, double, triple, or home run)
@@ -35,14 +36,18 @@ When watching a baseball game in person you might think that because there is a 
   * Batter walks or is hit by a pitch (HBP)
   * Batter hits a sacrifice fly or sacrifice bunt
 
+
 ### 3) Upon receiving the cup, players must "`ante`" a dollar into the cup
 This is an immutable wager, players deposit exactly $1 into the cup each time it is their `turn`
+
 
 ### 4) Based on the ending condition of a player's `turn` (see conditions in step 2 above), the player may have the opportunity to remove money from the cup and back into their wallet before passing the cup to `player[i+1]`.
 The amount of money a player can add or remove to or from the cup is based on the [Scoring](#scoring) below
 
+
 ### 5) If a player has zero dollars at the end of their `turn` they are still in the game
 They have the opportunity to remove dollars from the cup, assuming there is money in the cup when it is their `turn`, but a running tab is also kept on the player's `ante` that must be repaid before the player can begin removing dollars again. See [Accounting](#accounting) for a more in-depth explanation of how this is accounted for.
+
 
 ### 6) The game ends when the baseball game ends
 Anyone with money left in their wallet is a winner in my book, but all winners are not necessarily made equal...
