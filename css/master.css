@@ -1,6 +1,166 @@
-.form {
+#setup {
+  /* display: none; */
+}
+
+#gameplay {
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #fffdd0;
+}
+
+.container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+
+.column {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  background-color: white;
+  border-radius: 0.8rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  font-family: Georgia;
+  color: darkgreen;
+}
+
+h2 {
+  text-align: center;
+  font-family: Georgia;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+p {
+  text-align: justify;
+}
+
+.caveat {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.btn {
+  display: block;
+  margin: 1rem auto 0 auto;
+  width: 150px;
+  padding: 0.5rem;
+  border: none;
+  color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.start {
+  background-color: green;
+}
+
+.start:hover {
+  background-color: darkgreen;
+}
+
+#end {
+  background-color: red;
+  display: none;
+}
+
+#end:hover {
+  background-color: darkred;
+}
+
+
+/* --------- Game Setup --------- */
+
+.input {
+  display: flex;
+  justify-content: center;
+}
+
+span {
+  padding: 0.5rem;
+}
+
+input {
+  text-align: center;
+  border: 1px solid black;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.number {
+  width: 10%;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.controls * {
+  width: 10%;
+  margin: 0.5rem;
+  background-color: #d3d3d3;
+}
+
+.control {
+  border: none;
+}
+
+.control:hover {
+  cursor: pointer;
+  background-color: darkgrey;
+}
+
+table {
+  margin: 0 auto;
+  width: 100%;
+  border-spacing: 2rem 0.5rem;
+  border: 1px solid black;
+  background-color: #a38064;
+  border: none;
+  padding: 1rem 0;
+  color: white;
+}
+
+th:first-child {
   width: 20%;
-  margin: 2rem auto;
+}
+
+th:nth-child(2) {
+  width: 60%;
+}
+
+th:nth-child(3) {
+  width: 20%;
+}
+
+/* Setup Buttons */
+
+#add {
+  background-color: red;
+  margin-top: 0;
+  padding: 0.2rem 0.5rem;
+}
+
+#add:hover {
+  background-color: #3f3f3f;
 }

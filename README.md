@@ -1,4 +1,4 @@
-# The Baseball Dollar Game ⚾️💸
+# 💸⚾️ The Baseball Dollar Game ⚾️💸
 
 To the people who say that baseball is boring, I say you just haven't found a way to make it fun to watch yet. This is a game that my friend taught me in the stands of a Colorado Rockies baseball game. While I believe the ballpark is the only place this game is truly meant to be played, I realized it has logic and rules that make for a great object oriented programming project so let's see where this goes. I intend to take the basic rules described below, and build that into a script that controls an HTML interface for an online game that you can play with friends. So while I may take some creative liberties as this project goes on, the following description will serve as the foundation for this project.
 
@@ -64,7 +64,7 @@ Obviously players don't really have any control over whether they win or lose, t
 
 
 ## Scoring
-As the cup moves through the order, the amount of money in the cup will grow and shrink depending on the results of the at-bats in the baseball game (details outlined below). Only the player holding the cup can add or remove money to or from the cup. Money can only be added/removed based on the conditions below (the cup stays filled between innings):
+As the cup moves through the order, the amount of money in the cup will grow and shrink depending on the results of the at-bats in the baseball game. Only the player holding the cup can add or remove money to or from the cup. Money can only be added/removed based on the conditions below (note that the money stays in the cup between innings):
 
 * **Add $1** to the cup at the start of a `turn`
 * **Remove $1** from the cup for any of the following conditions:
@@ -100,3 +100,4 @@ As the project goes along, I am going to keep track of significant decisions mad
 * I am going to create different scripts for the setup & rules/gameplay to keep my code organized
 * Order will be randomized since players are not actually sitting at a baseball game
   * This keeps the game fair since the order is probably the most important element of luck
+* Instead of the original flow I envisioned (# of players, player names, player budgets, units per turn), it would make more sense to create each player one by one with a specific budget assigned to them. This way I can call the player constructor function each time this information is entered.

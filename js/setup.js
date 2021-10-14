@@ -1,19 +1,50 @@
 // Game Setup
 // This script defines the procedures for setting up the game:
-// 1) How many people would like to play? (need to construct players upon user entry and add them to a list)
-// 2) What are your player's names? (randomize the order of the players in the list)
-// 3) How much money would you like to put in the cup each turn? (set scoring based on unit)
-// 4) startgame()
-const setupForms = document.getElementById('setup'); // this will give us an array that allows us to turn on and off each form to present the to the user one at a time
-const numPlayers = document.getElementById('numPlayers');
-const playerNames = document.getElementById('playerNames');
-const unit = document.getElementById('unit');
-const startGame = document.getElementById('startGame');
+// Player reads rules
+// Player starts new game
+// Rules shift over and second div has display changed from none to flex
 
-// need a method for setting player order randomly
-function setOrder(players) {
-  Math.floor(Math.random() * players.length);
+// ====== Container Windows ======
+const windows = document.getElementsByClassName('column');
+
+// ====== Buttons ======
+const startBtn = document.getElementById('start');
+const endBtn = document.getElementById('end');
+const addBtn = document.getElementById('add');
+const beginBtn = document.getElementById('begin');
+const controlBtns = document.getElementsByClassName('control');
+
+// ====== Inputs ======
+const ante = document.getElementById('ante');
+const names = document.getElementsByClassName('name');
+const budgets = document.getElementsByClassName('budget');
+const table = document.querySelector('tbody');
+
+// ====== Event Listeners ======
+// Start the new game
+startBtn.addEventListener('click', function() {
+  windows[1].style.display = 'inline';
+  startBtn.style.display = 'none';
+  // endBtn.style.display = 'block';
+});
+
+// Add or subtract from the ante
+for(let i = 0 ; i < controlBtns.length ; i++) {
+  controlBtns[i].addEventListener('click', function() {
+    ante.value = Number(ante.value) + Number(this.name);
+  });
 }
+
+// Add more players
+addBtn.addEventListener('click', function() {
+  let newRow = table.insertRow(-1);
+});
+
+// Begin the game
+beginBtn.addEventListener('click', function() {
+  windows[1].style.display = 'none';
+  windows[2].style.display = 'inline';
+});
 
 
 
@@ -43,34 +74,13 @@ const scoring = {
 };
 
 // -----------------------------------------------------------------------------
-// ENTERING PLAYER NAMES
+// Creating Players
 // -----------------------------------------------------------------------------
-// based on the number of players selected, a list of names will be generated
-function setPlayerNames() {
-
-}
-
-// constructor function for creating new players
-// actions that players take: adding and removing money from cup
-function Player(name, money, hasCup) {
+function Player(name, budget) {
   this.name = name;
-  this.money = money;
-};
-
-Player.prototype.myTurn = function() {
-  // if they have the cup, return true
-  if(cup.position === this.position)
-  // if they don't return false
-};
-
-// ANTE method for adding a dollar to the cup (keep in mind this *removes* a dollar from their wallet)
-Player.prototype.ante = function() {
-  this.money -= scoring.ante;
-  cup.dollars += scoring.ante;
-};
-
-// method for taking a dollar from the cup and adding to a player's wallet
-Player.prototype.removeDollar = function(turnCondition) {
-  // add money to player's wallet based on result of the at-bat
-  this.money += turnCondition;
-};
+  this.budget = budget;
+  // method to ante up when it is their turn
+  this.ante = function() {
+    this.budget -= scoring.ante;
+  };
+}
