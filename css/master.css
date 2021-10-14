@@ -6,6 +6,10 @@
   display: none;
 }
 
+#anteContainer {
+  display: none;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -24,6 +28,8 @@ body {
   padding: 1rem 2rem;
   background-color: white;
   border-radius: 0.8rem;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 a {
@@ -44,7 +50,14 @@ h2 {
 
 h3 {
   text-align: center;
-  margin-top: 2rem;
+  background-color: #fffdd0;
+  padding: 0.2rem 0.8rem;
+  font-weight: normal;
+  border: 1px solid black;
+}
+
+ul {
+  margin-top: 0;
 }
 
 p {
@@ -130,15 +143,40 @@ input {
   background-color: darkgrey;
 }
 
+/* ====== Players Table ====== */
+.players {
+  display: flex;
+  justify-content: space-between;
+}
+
+.players input {
+  width: 20%;
+  border-bottom: none;
+  background-color: #f3f3f3
+}
+
+.players input:hover {
+  /* background-color: #3f3f3f; */
+  cursor: pointer;
+}
+
+.players input:nth-child(1):hover {
+  background-color: darkred;
+  color: white;
+}
+
+.players input:nth-child(2):hover {
+  background-color: darkgreen;
+  color: white;
+}
+
 table {
   margin: 0 auto;
   width: 100%;
   border-spacing: 2rem 0.5rem;
   border: 1px solid black;
-  background-color: darkgreen;
-  border: none;
+  background-color: #f3f3f3;
   padding: 1rem 0;
-  color: white;
 }
 
 th:first-child {
@@ -151,16 +189,4 @@ th:nth-child(2) {
 
 th:nth-child(3) {
   width: 20%;
-}
-
-/* Setup Buttons */
-
-#add {
-  background-color: red;
-  margin-top: 0;
-  padding: 0.2rem 0.5rem;
-}
-
-#add:hover {
-  background-color: #3f3f3f;
 }

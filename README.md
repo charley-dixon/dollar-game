@@ -101,3 +101,6 @@ As the project goes along, I am going to keep track of significant decisions mad
 * Order will be randomized since players are not actually sitting at a baseball game
   * This keeps the game fair since the order is probably the most important element of luck
 * Instead of the original flow I envisioned (# of players, player names, player budgets, units per turn), it would make more sense to create each player one by one with a specific budget assigned to them. This way I can call the player constructor function each time this information is entered.
+
+<!-- ====== IDEAS ====== -->
+<!-- In a more complete version, make the game like an online vending machine that makes you insert one dollar to play the game. It would have to mean that the game is more well-known at that point however, so people know what they're paying for -->

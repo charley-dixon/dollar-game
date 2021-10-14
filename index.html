@@ -14,7 +14,8 @@
     <div class="container">
       <div class="column">
         <h2>How to Play</h2>
-        <p><em>Whilst spectating a live baseball game</em>, players will pass around a "cup" which serves as a pot in chronological order (in this case it is a computer or a phone). The cup is to be passed when there is a new at-bat in the baseball game. When it is a player's turn to hold the cup, they will ante a dollar into it. Based on the result of the at-bat, the player holding the cup may have an opportunity to then remove money from the cup before passing it to the next player as outlined in the scoring below. The game ends when the baseball game ends, or one person collects all the money, or whenever you feel like it quite frankly.</p>
+        <hr>
+        <p><em>Whilst spectating a live baseball game</em>, players will pass around a "cup" in chronological order which serves as a pot (in this case it is a computer or a phone). The cup is to be passed when there is a new at-bat in the baseball game. When it is a player's turn to hold the cup, they will ante a dollar into it. Based on the result of the at-bat, the player holding the cup may have an opportunity to then remove money from the cup before passing it to the next player as outlined in the scoring below. The game ends when the baseball game ends, or one person collects all the money, or whenever you feel like it quite frankly.</p>
         <h3>Scoring</h3>
         <ul>
           <li>Add $1 to the cup every time the cup is received*</li>
@@ -32,6 +33,8 @@
         <p class="caveat">* This amount can be changed for any "High Rollers" out there. Be aware that once you run out of money you are out of the game.</p>
         <p class="caveat">** Each RBI is $1, batters can get up to 4 RBIs during an at-bat.</p>
         <p class="caveat">*** If there are fewer dollars in the cup than are owed to the player holding the cup, tough luck.</p>
+        <br>
+        <hr>
         <input type="submit" name="start" value="Start New Game" class="btn start" id="start">
         <!-- Hidden Reset Button that flips on with the start button being clicked -->
         <input type="submit" name="end" value="End Game" id="end" class="btn">
@@ -40,14 +43,18 @@
       <!-- ----------------------- Game Setup ----------------------- -->
       <div class="column" id="setup">
         <h2>Game Setup</h2>
+        <hr>
         <!-- Hidden section for v2.0 that connects to live baseball games
         <div class="inputs">
           <h3>Which game are you watching</h3>
           This will be an iframe or something that lists all the games that day
         </div> -->
-        <div class="inputs">
-          <h3>Add Players</h3>
-
+        <div class="inputs" id="playerTable">
+          <h3>Who's playing, and how much they got?</h3>
+          <div class="players">
+            <input type="submit" name="subtract" value="- Player" id="subtract">
+            <input type="submit" name="add" value="+ Player" id="add">
+          </div>
           <table>
             <thead>
               <tr>
@@ -70,11 +77,10 @@
               </tr>
             </tbody>
           </table>
-          <input type="submit" name="add" value="Add Player" class="btn" id="add">
         </div>
-        <br>
-        <div class="inputs">
-          <h3>How much do players have to ante when it is their turn?</h3>
+        <!-- This input is initially hidden from view -->
+        <div class="inputs" id="anteContainer">
+          <h3>What's the ante?</h3>
           <div class="input">
             <span>$</span>
             <input type="number" name="ante" value="1" id="ante" class="number">
@@ -87,12 +93,16 @@
             <input type="submit" name="5" value="+$5" class="control">
             <input type="submit" name="10" value="+$10" class="control">
           </div>
-          <input type="submit" name="start" value="Begin Game" class="btn start" id="begin">
         </div>
+        <br>
+        <hr>
+        <input type="submit" name="next" value="Next" class="btn start" id="next">
+        <input type="submit" name="start" value="Begin Game" class="btn start" id="begin">
       </div>
+
       <!-- ------------ Gameplay ------------ -->
       <div class="column" id="gameplay">
-
+        
       </div>
     </div>
   </body>
