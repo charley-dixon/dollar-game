@@ -3,7 +3,7 @@
 }
 
 #gameplay {
-  /* display: none; */
+  display: none;
 }
 
 #anteContainer {
@@ -210,6 +210,13 @@ th:nth-child(3) {
   border-spacing: 2rem 0.5rem;
 }
 
+#cupheader {
+  background-color: transparent;
+  font-family: Georgia;
+  border: none;
+  margin: 0;
+}
+
 #displaytable .category {
   text-align: right;
   width: 10%;
@@ -225,8 +232,17 @@ th:nth-child(3) {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
 .result {
   width: 45%;
+  border: none;
+  background-color: #d3d3d3;
+}
+
+.result:hover {
+  cursor: pointer;
+  background-color: darkgrey;
+  box-shadow: 0 0 3px black;
 }
 
 .result:nth-child(n-2) {

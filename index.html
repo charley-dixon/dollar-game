@@ -105,30 +105,31 @@
         <h2>Play Ball!</h2>
         <hr>
         <div class="display">
+          <h3 id="cupheader">The Cup</h3>
           <table id="displaytable">
             <tr>
-              <td class="category">At-Bat:</td>
-              <td id="player" class="atbatinfo"></td>
-            </tr>
-            <tr>
-              <td class="category">Budget Remaining:</td>
-              <td id="bankroll" class="atbatinfo"></td>
-            </tr>
-            <tr>
-              <td class="category">In the Cup:</td>
+              <td class="category">Dollar Amount:</td>
               <td id="cup" class="atbatinfo"></td>
             </tr>
             <tr>
-              <td class="category">Turn:</td>
-              <td id="atbat" class="atbatinfo"></td>
+              <td class="category">Held by:</td>
+              <td id="player" class="atbatinfo"></td>
+            </tr>
+            <tr>
+              <td class="category">Player Budget:</td>
+              <td id="bankroll" class="atbatinfo"></td>
             </tr>
             <tr>
               <td class="category">On Deck:</td>
               <td id="ondeck" class="atbatinfo"></td>
             </tr>
+            <tr>
+              <td class="category">Last At-bat:</td>
+              <td id="last" class="atbatinfo"></td>
+            </tr>
           </table>
         </div>
-        <h3>Result of At-Bat</h3>
+        <h3>Result of Current At-Bat</h3>
         <div id="results">
           <input type="submit" name="out" value="Out or FC" class="result">
           <input type="submit" name="one" value="Walk or HBP" class="result">
