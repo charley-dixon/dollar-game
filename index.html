@@ -55,7 +55,7 @@
             <input type="submit" name="subtract" value="- Player" id="subtract">
             <input type="submit" name="add" value="+ Player" id="add">
           </div>
-          <table>
+          <table id="tablePlayers">
             <thead>
               <tr>
                 <th>Player</th>
@@ -102,7 +102,49 @@
 
       <!-- ------------ Gameplay ------------ -->
       <div class="column" id="gameplay">
-        
+        <h2>Play Ball!</h2>
+        <hr>
+        <div class="display">
+          <table id="displaytable">
+            <tr>
+              <td class="category">At-Bat:</td>
+              <td id="player" class="atbatinfo"></td>
+            </tr>
+            <tr>
+              <td class="category">Budget Remaining:</td>
+              <td id="bankroll" class="atbatinfo"></td>
+            </tr>
+            <tr>
+              <td class="category">In the Cup:</td>
+              <td id="cup" class="atbatinfo"></td>
+            </tr>
+            <tr>
+              <td class="category">Turn:</td>
+              <td id="atbat" class="atbatinfo"></td>
+            </tr>
+            <tr>
+              <td class="category">On Deck:</td>
+              <td id="ondeck" class="atbatinfo"></td>
+            </tr>
+          </table>
+        </div>
+        <h3>Result of At-Bat</h3>
+        <div id="results">
+          <input type="submit" name="out" value="Out or FC" class="result">
+          <input type="submit" name="one" value="Walk or HBP" class="result">
+          <input type="submit" name="one" value="Single" class="result">
+          <input type="submit" name="two" value="Double" class="result">
+          <input type="submit" name="three" value="Triple" class="result">
+          <input type="submit" name="all" value="Home Run" class="result">
+        </div>
+        <div id="rbi">
+          <label for="rbis">RBIs:</label>
+          <input type="number" name="rbis" value="0" min="0" max="3">
+        </div>
+        <br>
+        <hr>
+        <input type="submit" name="score" value="Scoreboard" class="btn start">
+        <!-- This table will show who has the cup and the overall standings -->
       </div>
     </div>
   </body>

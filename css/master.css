@@ -3,7 +3,7 @@
 }
 
 #gameplay {
-  display: none;
+  /* display: none; */
 }
 
 #anteContainer {
@@ -30,6 +30,7 @@ body {
   border-radius: 0.8rem;
   max-height: 80vh;
   overflow-y: auto;
+  transition: visibility 2s, opacity 0.5s linear;
 }
 
 a {
@@ -170,7 +171,7 @@ input {
   color: white;
 }
 
-table {
+#tablePlayers {
   margin: 0 auto;
   width: 100%;
   border-spacing: 2rem 0.5rem;
@@ -189,4 +190,49 @@ th:nth-child(2) {
 
 th:nth-child(3) {
   width: 20%;
+}
+
+#begin {
+  display: none;
+}
+
+
+/* ===================== GAMEPLAY ===================== */
+.display {
+  background-color: green;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+}
+
+#displaytable {
+  width: 100%;
+  border-spacing: 2rem 0.5rem;
+}
+
+#displaytable .category {
+  text-align: right;
+  width: 10%;
+}
+
+.atbatinfo {
+  background-color: #fffdd0;
+  width: 25%;
+}
+
+#results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.result {
+  width: 45%;
+}
+
+.result:nth-child(n-2) {
+  margin-top: 0.3rem;
+}
+
+#rbi {
+  display: none;
 }
