@@ -6,13 +6,12 @@ const anteBox = document.getElementById('anteContainer');
 
 // ====== How to Play Variables ======
 const startBtn = document.getElementById('start');
-const endBtn = document.getElementById('end');
 
 
 // ====== Game Setup Variables ======
 const addBtn = document.getElementById('add');
 const subBtn = document.getElementById('subtract');
-const table = document.querySelector('tbody');
+const playersTable = document.getElementById('tablePlayers');
 const names = document.getElementsByClassName('name');
 const budgets = document.getElementsByClassName('budget');
 const nextBtn = document.getElementById('next');
@@ -26,40 +25,90 @@ const beginBtn = document.getElementById('begin');
 let playersObject = {};
 
 
+
+// Gameplay windows
+const displayTable = document.getElementById('displaytable');
+const rbiWindow = document.getElementById('rbi');
+const resultWindow = document.getElementById('results');
+const results = document.getElementsByClassName('result');
+
+
+// ====== Gameplay Variables ======
+const out = results[0];
+const walk = results[1];
+const single = results[2];
+const double = results[3];
+const triple = results[4];
+const homerun = results[5];
+const endBtn = document.getElementById('end');
+
+
 // ====== Gameplay Objects ======
 const cup = {
   passes: 0,
   amount: 0,
-  atbat: function() {
-    for(let i = 1; i <= Object.keys(playersObject).length ; i++) {
-      if(playersObject[i].cup === true) {
-        return playersObject[i].name;
-      }
+  index: 1, // always starts at player 1 which is an object key, NOT an array index (i.e. does not start at '0')
+
+  // pass the cup
+  pass: function() {
+    // if the cup is at the last person in line reset to index 1, otherwise add 1
+    if(this.index === Object.keys(playersObject).length) {
+      this.index = 1;
+    } else {
+      this.index += 1;
     }
-    return 'None';
+    // after new index is set, ante up
+    playersObject[this.index].ante();
+  },
+
+  // using this value to access the next player to hold the cup
+  // could not use the 'pass' method because it actually changes this.index
+  get ondeck() {
+    if(this.index === Object.keys(playersObject).length) {
+      return 1;
+    } else {
+      return this.index + 1;
+    }
   }
 }
 
 const scoring = {
-  single: function() {
-    cup.amount -= 1;
+  single: function(player) {
+    cup.amount -= Number(ante.value);
+    player.budget += Number(ante.value);
   },
-  double: function() {
-    if(cup.amount >= 2) {
-      cup.amount -= 2;
+  double: function(player) {
+    if(cup.amount >= 2 * Number(ante.value)) {
+      cup.amount -= 2 * Number(ante.value);
+      player.budget += 2 * Number(ante.value);
     } else {
       // it'll be zero no matter what since a double was scored
+      player.budget += cup.amount;
       cup.amount = 0;
     }
+  },
+  triple: function(player) {
+    if(cup.amount >= 3 * Number(ante.value)) {
+      cup.amount -= 3 * Number(ante.value);
+      player.budget += 3 * Number(ante.value);
+    } else {
+      // it'll be zero no matter what since a triple was scored
+      player.budget += cup.amount;
+      cup.amount = 0;
+    }
+  },
+  homerun: function(player) {
+    player.budget += cup.amount;
+    cup.amount = 0;
   }
 }
 
 
 // ====== Constructor Functions ======
+// this is our only constructor function because it is the only object that is user-created
 function Player(name, budget) {
   this.name = name;
   this.budget = budget;
-  this.cup = false;
   this.ante = function() {
     // add ante to cup
     cup.amount += Number(ante.value);
@@ -76,13 +125,12 @@ function Player(name, budget) {
 startBtn.addEventListener('click', function() {
   windows[1].style.display = 'inline';
   startBtn.style.display = 'none';
-  // endBtn.style.display = 'block';
 });
 
 // Add Players
 addBtn.addEventListener('click', function() {
   // each time a new player is added, the number of players increases by 1
-  let newPname = 'Player ' + (table.rows.length + 1);
+  let newPname = 'Player ' + (playersTable.rows.length + 1);
   // clone row 1 and modify the player name
   let row2clone = document.getElementById('clone');
   let clone = row2clone.cloneNode(true);
@@ -91,13 +139,13 @@ addBtn.addEventListener('click', function() {
   console.log(clone.cells[0]);
   // change the name of player, but that's it
   clone.cells[0].textContent = newPname;
-  table.appendChild(clone);
+  playersTable.appendChild(clone);
 });
 
 // Subtract Players
 subBtn.addEventListener('click', function() {
-  if(table.rows.length > 2) {
-    table.deleteRow(-1);
+  if(playersTable.rows.length > 2) {
+    playersTable.deleteRow(-1);
   } else {
     alert('You need at least 2 players to play!')
   }
@@ -106,6 +154,7 @@ subBtn.addEventListener('click', function() {
 // Submit Players
 nextBtn.addEventListener('click', function() {
   // grab the current values in the player table
+  // I want to grab these "live" meaning that the variables aren't created until someone clicks the button
   let players = document.getElementsByClassName('name');
   let budgets = document.getElementsByClassName('budget');
 
@@ -122,14 +171,14 @@ nextBtn.addEventListener('click', function() {
     playersObject[i + 1] = new Player(players[i].value, budgets[i].value);
   }
 
-  // if the loop is successful it means that every player has a name and budget
+  // update the displays
   nextBtn.style.display = 'none';
   beginBtn.style.display = 'block';
   playerTable.style.display = 'none';
   anteBox.style.display = 'block';
 });
 
-// Ante Control
+// Setting the Ante with control buttons
 for(let i = 0 ; i < controlBtns.length ; i++) {
   controlBtns[i].addEventListener('click', function() {
     ante.value = Number(ante.value) + Number(this.name);
@@ -143,10 +192,79 @@ beginBtn.addEventListener('click', function() {
     return alert('You need to wager at least $1 to play!');
   }
 
+  // ante up
+  playersObject[1].ante();
+
+  // update display
+  updateDisplay();
+
   // Hide setup, display gameplay
   windows[1].style.display = 'none';
   windows[2].style.display = 'inline';
-  endBtn.style.display = 'block';
+});
+
+
+
+// ====== GAMEPLAY FUNCTION ======
+// These are repeated actions that happen any time one of the buttons is clicked on the interface
+
+function updateDisplay() {
+  // Fill in the display on the next screen
+  // dollars in the cup
+  displayTable.rows[0].cells[1].textContent = cup.amount;
+  // person holding the cup
+  displayTable.rows[1].cells[1].textContent = playersObject[cup.index].name;
+  // budget of person holding the cup
+  displayTable.rows[2].cells[1].textContent = playersObject[cup.index].budget;
+  // person on deck
+  displayTable.rows[3].cells[1].textContent = playersObject[cup.ondeck].name;
+}
+
+
+
+
+// ========= Gameplay Event Listeners ==========
+// each event listener simply updates and retrieves values from the objects I've created (people, cup, and scoring)
+
+// Out or FC
+out.addEventListener('click', function() {
+  // pass the cup and update the display
+  cup.pass();
+  updateDisplay();
+});
+
+// singles & walks
+walk.addEventListener('click', function() {
+  scoring.single(playersObject[cup.index]);
+  cup.pass();
+  updateDisplay();
+});
+
+single.addEventListener('click', function() {
+  scoring.single(playersObject[cup.index]);
+  cup.pass();
+  updateDisplay();
+});
+
+// doubles
+double.addEventListener('click', function() {
+  scoring.double(playersObject[cup.index]);
+  cup.pass();
+  updateDisplay();
+});
+
+// triples
+triple.addEventListener('click', function() {
+  scoring.triple(playersObject[cup.index]);
+  cup.pass();
+  updateDisplay();
+});
+
+// home run
+homerun.addEventListener('click', function() {
+  scoring.homerun(playersObject[cup.index]);
+  cup.pass();
+  updateDisplay();
 });
 
 // End Game
@@ -157,8 +275,7 @@ endBtn.addEventListener('click', function() {
     windows[1].style.display = 'none';
     windows[2].style.display = 'none';
 
-    // hide end btn & turn start btn on in 'How to Play'
-    endBtn.style.display = 'none';
+    // Turn start btn on in 'How to Play'
     startBtn.style.display = 'block';
 
     // reset the game setup container
@@ -169,9 +286,8 @@ endBtn.addEventListener('click', function() {
     playersObject = {};
 
     // delete any excess rows in player table, starting with 2 players each time
-    while(table.rows.length > 2) {
-      console.log(table.rows.length);
-      table.deleteRow(-1);
+    while(playersTable.rows.length > 2) {
+      playersTable.deleteRow(-1);
     }
 
     // *AFTER the while loop, reset the values of the table to ''

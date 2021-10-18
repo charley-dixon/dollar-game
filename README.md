@@ -88,6 +88,12 @@ In the reverse situation, when a player has the opportunity to remove more money
 This is an ongoing list that I will update as the project moves along:
 * Getters and setters allow us to dynamically change the values of object properties
   * I was unable to get the various scoring results to update on their own. For example, if I changed the `ante` to be $5 instead of $1 I want that value to automatically update in my scoring object.
+* Understanding how to take various pieces of the program and use them to `get` or `set` object properties made this remarkably easier to program.
+  * Instead of writing 100 different functions to update parts of my display (i.e. retrieving the budget of the person holding the cup), I can `get` the value of `cup.index` (which is `set` by pressing the "Begin Game" button) to access the correct key in `playersObject` to then access the property `this.budget` for the player who is holding the cup. Much easier than having to write an `updateBudget` function. This project has been crucial in my understanding of OOP & OOJS.
+
+
+## Questions
+* In large applications, does _when_ you declare your variables affect the performance of the application? For example, if I have a form with a lot of inputs, I think it would make sense not to retrieve the value of those inputs (by adding event listeners) until a submission event occurs. If we have an event listener that is hanging out constantly updating the input values then I feel it could slow down the program.
 
 
 ## Programming Decisions
