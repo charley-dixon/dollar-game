@@ -90,6 +90,7 @@ This is an ongoing list that I will update as the project moves along:
   * I was unable to get the various scoring results to update on their own. For example, if I changed the `ante` to be $5 instead of $1 I want that value to automatically update in my scoring object.
 * Understanding how to take various pieces of the program and use them to `get` or `set` object properties made this remarkably easier to program.
   * Instead of writing 100 different functions to update parts of my display (i.e. retrieving the budget of the person holding the cup), I can `get` the value of `cup.index` (which is `set` by pressing the "Begin Game" button) to access the correct key in `playersObject` to then access the property `this.budget` for the player who is holding the cup. Much easier than having to write an `updateBudget` function. This project has been crucial in my understanding of OOP & OOJS.
+* Put some major thought into the names of your variables...
 
 
 ## Questions
@@ -107,6 +108,7 @@ As the project goes along, I am going to keep track of significant decisions mad
 * Order will be randomized since players are not actually sitting at a baseball game
   * This keeps the game fair since the order is probably the most important element of luck
 * Instead of the original flow I envisioned (# of players, player names, player budgets, units per turn), it would make more sense to create each player one by one with a specific budget assigned to them. This way I can call the player constructor function each time this information is entered.
+* I want to use a `setter` function to change the index for the cup
 
 <!-- ====== IDEAS ====== -->
 <!-- In a more complete version, make the game like an online vending machine that makes you insert one dollar to play the game. It would have to mean that the game is more well-known at that point however, so people know what they're paying for -->

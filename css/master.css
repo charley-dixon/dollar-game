@@ -1,3 +1,4 @@
+/* ============= GAME WINDOWS ============= */
 #setup {
   display: none;
 }
@@ -144,6 +145,7 @@ input {
 }
 
 /* ====== Players Table ====== */
+/* Add/Subtract Controls */
 .players {
   display: flex;
   justify-content: space-between;
@@ -169,6 +171,7 @@ input {
   background-color: darkgreen;
   color: white;
 }
+
 
 #tablePlayers {
   margin: 0 auto;
@@ -255,4 +258,8 @@ th:nth-child(3) {
 
 #pass {
 
+}
+
+.standings {
+  display: none;
 }

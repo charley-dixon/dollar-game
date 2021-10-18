@@ -1,6 +1,7 @@
 // ====== Dialogue Boxes for UX/UI ======
 const windows = document.getElementsByClassName('column');
-const playerTable = document.getElementById('playerTable');
+const adjustPlayers = document.getElementById('playerTable'); // this is for the <tbody> tag
+const playerTable = document.getElementById('playerTableBody');
 const anteBox = document.getElementById('anteContainer');
 
 
@@ -40,6 +41,7 @@ const single = results[2];
 const double = results[3];
 const triple = results[4];
 const homerun = results[5];
+const scoreboard = document.getElementById('scoreboard');
 const endBtn = document.getElementById('end');
 
 
@@ -109,11 +111,13 @@ const scoring = {
 function Player(name, budget) {
   this.name = name;
   this.budget = budget;
+  this.atbats = 0;
   this.ante = function() {
     // add ante to cup
     cup.amount += Number(ante.value);
     // remove ante from budget
     this.budget -= Number(ante.value);
+    this.atbats += 1;
   }
 }
 
@@ -130,22 +134,21 @@ startBtn.addEventListener('click', function() {
 // Add Players
 addBtn.addEventListener('click', function() {
   // each time a new player is added, the number of players increases by 1
-  let newPname = 'Player ' + (playersTable.rows.length + 1);
+  let newPname = 'Player ' + (playerTable.rows.length + 1);
   // clone row 1 and modify the player name
   let row2clone = document.getElementById('clone');
   let clone = row2clone.cloneNode(true);
   // remove id to prevent conflicts with duplicate IDs
   clone.id = '';
-  console.log(clone.cells[0]);
   // change the name of player, but that's it
   clone.cells[0].textContent = newPname;
-  playersTable.appendChild(clone);
+  playerTable.appendChild(clone);
 });
 
 // Subtract Players
 subBtn.addEventListener('click', function() {
-  if(playersTable.rows.length > 2) {
-    playersTable.deleteRow(-1);
+  if(playerTable.rows.length > 2) {
+    playerTable.deleteRow(-1);
   } else {
     alert('You need at least 2 players to play!')
   }
@@ -174,7 +177,7 @@ nextBtn.addEventListener('click', function() {
   // update the displays
   nextBtn.style.display = 'none';
   beginBtn.style.display = 'block';
-  playerTable.style.display = 'none';
+  adjustPlayers.style.display = 'none';
   anteBox.style.display = 'block';
 });
 
@@ -267,6 +270,11 @@ homerun.addEventListener('click', function() {
   updateDisplay();
 });
 
+// Check Scoreboard
+scoreboard.addEventListener('click', function() {
+  // hide player table AND results
+});
+
 // End Game
 endBtn.addEventListener('click', function() {
   let sure = prompt('Are you sure? Enter Y to end game, or N to keep playing.');
@@ -279,15 +287,19 @@ endBtn.addEventListener('click', function() {
     startBtn.style.display = 'block';
 
     // reset the game setup container
-    playerTable.style.display = 'block';
+    adjustPlayers.style.display = 'block';
     anteBox.style.display = 'none';
     beginBtn.style.display = 'none';
     nextBtn.style.display = 'block';
     playersObject = {};
 
+    // reset cup
+    cup.amount = 0;
+    cup.index = 1;
+
     // delete any excess rows in player table, starting with 2 players each time
-    while(playersTable.rows.length > 2) {
-      playersTable.deleteRow(-1);
+    while(playerTable.rows.length > 2) {
+      playerTable.deleteRow(-1);
     }
 
     // *AFTER the while loop, reset the values of the table to ''

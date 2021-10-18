@@ -52,7 +52,7 @@
             <input type="submit" name="subtract" value="- Player" id="subtract">
             <input type="submit" name="add" value="+ Player" id="add">
           </div>
-          <table>
+          <table id="tablePlayers">
             <thead>
               <tr>
                 <th>Player</th>
@@ -60,7 +60,7 @@
                 <th>Budget</th>
               </tr>
             </thead>
-            <tbody id="tablePlayers">
+            <tbody id="playerTableBody">
               <!-- identifying row 1 as a clone row for the 'Add Player' event listener -->
               <tr id="clone">
                 <td>Player 1</td>
@@ -136,11 +136,27 @@
           <input id="rbis" type="number" name="rbis" value="0" min="0" max="3">
           <input id="pass" type="submit" name="pass" value="Pass Cup" class="btn start">
         </div>
+
+        <!-- This table will show who has the cup and the overall standings -->
+        <div class="standings">
+          <table>
+            <thead>
+              <tr>
+                <th>Cup</th>
+                <th>Player</th>
+                <th>Name</th>
+                <th>Budget Remaining</th>
+              </tr>
+            </thead>
+            <tbody>
+                            
+            </tbody>
+          </table>
+        </div>
         <br>
         <hr>
-        <input type="submit" name="score" value="Scoreboard" class="btn start">
+        <input type="submit" name="score" value="Scoreboard" class="btn start" id="scoreboard">
         <input type="submit" name="end" value="End Game" id="end" class="btn">
-        <!-- This table will show who has the cup and the overall standings -->
       </div>
     </div>
   </body>
