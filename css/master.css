@@ -1,4 +1,16 @@
+/* ======= Font Import ====== */
+@font-face {
+  font-family: "Rampart";
+  src: url("./../fonts/Rampart_One/RampartOne-Regular.ttf") format("truetype")
+}
+
+
+
 /* ============= GAME WINDOWS ============= */
+#scoreboard {
+  /* display: none; */
+}
+
 #setup {
   display: none;
 }
@@ -11,6 +23,8 @@
   display: none;
 }
 
+
+/* ============= Defaults ============= */
 body {
   margin: 0;
   font-family: sans-serif;
@@ -28,8 +42,7 @@ body {
   border: 1px solid black;
   padding: 1rem 2rem;
   background-color: white;
-  border-radius: 0.8rem;
-  max-height: 80vh;
+  max-height: 70vh;
   overflow-y: auto;
   transition: visibility 2s, opacity 0.5s linear;
 }
@@ -41,8 +54,16 @@ a {
 
 h1 {
   text-align: center;
-  font-family: Georgia;
-  color: darkgreen;
+  font-family: Rampart;
+  color: #fffdd0;
+  background-color: darkgreen;
+  font-size: 3rem;
+  margin-top: 0;
+  padding: 1rem 0;
+}
+
+h1:hover {
+  background-color: green;
 }
 
 h2 {
@@ -52,10 +73,16 @@ h2 {
 
 h3 {
   text-align: center;
-  background-color: #fffdd0;
-  padding: 0.2rem 0.8rem;
+  /* color: #fffdd0; */
+  color: white;
+  background-color: green;
+  padding: 0.5rem 0;
   font-weight: normal;
-  border: 1px solid black;
+  font-family: Georgia;
+}
+
+h4 {
+  text-align: center;
 }
 
 ul {
@@ -201,10 +228,9 @@ th:nth-child(3) {
 
 /* ===================== GAMEPLAY ===================== */
 .display {
-  background-color: green;
+  background-color: darkgreen;
   color: white;
   padding: 0.5rem 1rem;
-  border: 1px solid black;
 }
 
 #displaytable {
@@ -252,14 +278,19 @@ th:nth-child(3) {
   margin-top: 0.3rem;
 }
 
+/* RBI Window; initially hidden until triggered by an at-bat result */
 #rbi {
   display: none;
 }
 
-#pass {
-
+/* RBI input box */
+#rbis {
+  width: 10%;
+  /* padding: 1rem; */
+  margin: 0 auto;
+  display: block;
 }
 
-.standings {
+#standings {
   display: none;
 }

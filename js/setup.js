@@ -32,6 +32,8 @@ const displayTable = document.getElementById('displaytable');
 const rbiWindow = document.getElementById('rbi');
 const resultWindow = document.getElementById('results');
 const results = document.getElementsByClassName('result');
+const standingsWindow = document.getElementById('standings');
+const scoreboard = document.getElementById('scoreboard');
 
 
 // ====== Gameplay Variables ======
@@ -41,7 +43,8 @@ const single = results[2];
 const double = results[3];
 const triple = results[4];
 const homerun = results[5];
-const scoreboard = document.getElementById('scoreboard');
+const rbis = document.getElementById('rbis');
+const passBtn = document.getElementById('pass');
 const endBtn = document.getElementById('end');
 
 
@@ -102,6 +105,15 @@ const scoring = {
   homerun: function(player) {
     player.budget += cup.amount;
     cup.amount = 0;
+  },
+  rbi: function(player) {
+    if(cup.amount >= Number(rbis.value)) {
+      cup.amount -= Number(rbis.value);
+      player.budget += Number(rbis.value);
+    } else {
+      player.budget += cup.amount;
+      cup.amount = 0;
+    }
   }
 }
 
@@ -208,7 +220,7 @@ beginBtn.addEventListener('click', function() {
 
 
 
-// ====== GAMEPLAY FUNCTION ======
+// ====== GAMEPLAY FUNCTIONS ======
 // These are repeated actions that happen any time one of the buttons is clicked on the interface
 
 function updateDisplay() {
@@ -223,7 +235,12 @@ function updateDisplay() {
   displayTable.rows[3].cells[1].textContent = playersObject[cup.ondeck].name;
 }
 
-
+function rbiCheck() {
+  // this function literally just flips the windows and shows the pass btn.
+  // hide the results, and prompt user for RBIs
+  resultWindow.style.display = 'none';
+  rbiWindow.style.display = 'block';
+}
 
 
 // ========= Gameplay Event Listeners ==========
@@ -231,36 +248,31 @@ function updateDisplay() {
 
 // Out or FC
 out.addEventListener('click', function() {
-  // pass the cup and update the display
-  cup.pass();
-  updateDisplay();
+  // check for RBIs
+  rbiCheck();
 });
 
 // singles & walks
 walk.addEventListener('click', function() {
   scoring.single(playersObject[cup.index]);
-  cup.pass();
-  updateDisplay();
+  rbiCheck();
 });
 
 single.addEventListener('click', function() {
   scoring.single(playersObject[cup.index]);
-  cup.pass();
-  updateDisplay();
+  rbiCheck();
 });
 
 // doubles
 double.addEventListener('click', function() {
   scoring.double(playersObject[cup.index]);
-  cup.pass();
-  updateDisplay();
+  rbiCheck();
 });
 
 // triples
 triple.addEventListener('click', function() {
   scoring.triple(playersObject[cup.index]);
-  cup.pass();
-  updateDisplay();
+  rbiCheck();
 });
 
 // home run
@@ -268,6 +280,19 @@ homerun.addEventListener('click', function() {
   scoring.homerun(playersObject[cup.index]);
   cup.pass();
   updateDisplay();
+});
+
+// pass the cup
+passBtn.addEventListener('click', function() {
+  scoring.rbi(playersObject[cup.index]);
+  rbis.value = 0;
+  // pass the cup and update the display
+  cup.pass();
+  updateDisplay();
+
+  // reset the results and rbi windows
+  rbiWindow.style.display = 'none';
+  resultWindow.style.display = 'flex';
 });
 
 // Check Scoreboard

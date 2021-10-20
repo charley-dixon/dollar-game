@@ -7,7 +7,7 @@
     <script src="./js/setup.js" charset="utf-8" defer></script>
   </head>
   <body>
-    <a href="https://github.com/charley-dixon/dollar-game" target="_blank">
+    <a href="https://github.com/charley-dixon/dollar-game#readme" target="_blank">
       <h1>💸⚾️ The Baseball Dollar Game ⚾️💸</h1>
     </a>
     <div class="container">
@@ -37,7 +37,26 @@
         <input type="submit" name="start" value="Start New Game" class="btn start" id="start">
       </div>
 
-      <!-- ----------------------- Game Setup ----------------------- -->
+      <!-- ============= Scoreboard ============= -->
+      <div class="column" id="scoreboard">
+        <h2>Scoreboard</h2>
+        <hr>
+        <table>
+          <thead>
+            <tr>
+              <th>Cup</th>
+              <th>Player</th>
+              <th>Name</th>
+              <th>Budget Remaining</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ============= Game Setup ============= -->
       <div class="column" id="setup">
         <h2>Game Setup</h2>
         <hr>
@@ -47,7 +66,7 @@
           This will be an iframe or something that lists all the games that day
         </div> -->
         <div class="inputs" id="playerTable">
-          <h3>Who's playing, and how much they got?</h3>
+          <h3>Who's playing, and how much are they willing to lose?</h3>
           <div class="players">
             <input type="submit" name="subtract" value="- Player" id="subtract">
             <input type="submit" name="add" value="+ Player" id="add">
@@ -57,7 +76,7 @@
               <tr>
                 <th>Player</th>
                 <th>Name</th>
-                <th>Budget</th>
+                <th>Budget ($)</th>
               </tr>
             </thead>
             <tbody id="playerTableBody">
@@ -97,65 +116,50 @@
         <input type="submit" name="start" value="Begin Game" class="btn start" id="begin">
       </div>
 
-      <!-- ------------ Gameplay ------------ -->
+      <!-- ============= Gameplay ============= -->
       <div class="column" id="gameplay">
         <h2>Play Ball!</h2>
         <hr>
-        <div class="display">
-          <h3 id="cupheader">The "Cup"</h3>
-          <table id="displaytable">
-            <tr>
-              <td class="category">Dollar Amount:</td>
-              <td id="cup" class="atbatinfo"></td>
-            </tr>
-            <tr>
-              <td class="category">Held by:</td>
-              <td id="player" class="atbatinfo"></td>
-            </tr>
-            <tr>
-              <td class="category">Player Budget:</td>
-              <td id="bankroll" class="atbatinfo"></td>
-            </tr>
-            <tr>
-              <td class="category">On Deck:</td>
-              <td id="ondeck" class="atbatinfo"></td>
-            </tr>
-          </table>
-        </div>
-        <h3>Result of Current At-Bat</h3>
-        <div id="results">
-          <input type="submit" name="out" value="Out or FC" class="result">
-          <input type="submit" name="one" value="Walk or HBP" class="result">
-          <input type="submit" name="one" value="Single" class="result">
-          <input type="submit" name="two" value="Double" class="result">
-          <input type="submit" name="three" value="Triple" class="result">
-          <input type="submit" name="all" value="Home Run" class="result">
-        </div>
-        <div id="rbi">
-          <label for="rbis">RBIs:</label>
-          <input id="rbis" type="number" name="rbis" value="0" min="0" max="3">
-          <input id="pass" type="submit" name="pass" value="Pass Cup" class="btn start">
-        </div>
 
-        <!-- This table will show who has the cup and the overall standings -->
-        <div class="standings">
-          <table>
-            <thead>
+        <div>
+          <div class="display">
+            <h3 id="cupheader">The "Cup"</h3>
+            <table id="displaytable">
               <tr>
-                <th>Cup</th>
-                <th>Player</th>
-                <th>Name</th>
-                <th>Budget Remaining</th>
+                <td class="category">Dollar Amount:</td>
+                <td id="cup" class="atbatinfo"></td>
               </tr>
-            </thead>
-            <tbody>
-                            
-            </tbody>
-          </table>
+              <tr>
+                <td class="category">Held by:</td>
+                <td id="player" class="atbatinfo"></td>
+              </tr>
+              <tr>
+                <td class="category">Player Budget:</td>
+                <td id="bankroll" class="atbatinfo"></td>
+              </tr>
+              <tr>
+                <td class="category">On Deck:</td>
+                <td id="ondeck" class="atbatinfo"></td>
+              </tr>
+            </table>
+          </div>
+          <h3>Result of Current At-Bat</h3>
+          <div id="results">
+            <input type="submit" name="out" value="Out or FC" class="result">
+            <input type="submit" name="one" value="Walk or HBP" class="result">
+            <input type="submit" name="one" value="Single" class="result">
+            <input type="submit" name="two" value="Double" class="result">
+            <input type="submit" name="three" value="Triple" class="result">
+            <input type="submit" name="all" value="Home Run" class="result">
+          </div>
+          <div id="rbi">
+            <h4>RBIs</h4>
+            <input id="rbis" type="number" name="rbis" value="0" min="0" max="3">
+            <input id="pass" type="submit" name="pass" value="Pass Cup" class="btn start">
+          </div>
         </div>
         <br>
         <hr>
-        <input type="submit" name="score" value="Scoreboard" class="btn start" id="scoreboard">
         <input type="submit" name="end" value="End Game" id="end" class="btn">
       </div>
     </div>

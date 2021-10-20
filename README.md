@@ -24,7 +24,7 @@ To play the game you need the following:
 
 ## Objective
 
-The objective of the game is to win as much of everyone else's money as possible and, conversely, not lose any of your own. Be aware that it is possible to lose more money than you bring to the ballpark.
+The objective of the game is to win as much of everyone else's money as possible and, conversely, not lose any of your own. If you run out of money, you are out of the game.
 
 
 ## Rules
@@ -46,18 +46,14 @@ When watching a baseball game in person you might think that because there is a 
 
 
 ### 3) Upon receiving the cup, players must "`ante`" a dollar into the cup
-This is an immutable wager, players deposit exactly $1 into the cup each time it is their `turn`
+Once this amount is determined (before the game begins) it is an immutable wager, players deposit the same `ante` into the cup each time it is their `turn`
 
 
 ### 4) Based on the ending condition of a player's `turn` (see conditions in step 2 above), the player may have the opportunity to remove money from the cup and back into their wallet before passing the cup to `player[i+1]`.
 The amount of money a player can add or remove to or from the cup is based on the [Scoring](#scoring) below
 
 
-### 5) If a player has zero dollars at the end of their `turn` they are still in the game
-They have the opportunity to remove dollars from the cup, assuming there is money in the cup when it is their `turn`, but a running tab is also kept on the player's `ante` that must be repaid before the player can begin removing dollars again. See [Accounting](#accounting) for a more in-depth explanation of how this is accounted for.
-
-
-### 6) The game ends when the baseball game ends
+### 5) The game ends when the baseball game ends
 Anyone with money left in their wallet is a winner in my book, but all winners are not necessarily made equal...
 
 Obviously players don't really have any control over whether they win or lose, that all depends on the actual baseball game itself, so the game is really about camaraderie, friendship, and the love of baseball. If you're fiscally conscious, think about this: _the more people you play with the less money you lose_, because you will have fewer `turn`s (and thus less `ante`'ing). So make a lot of friends, finish a beer, save the cup, ask some poor cashier to break a twenty dollar bill into singles, and get down to a ballpark near you.
@@ -77,12 +73,6 @@ As the cup moves through the order, the amount of money in the cup will grow and
 * **Remove every dollar in the cup** for a home run
 
 
-### Accounting
-When it comes to accounting for these dollars, leave your traditional accounting brain at the gates. In the event that a player runs out of money, they can elect to be debited the dollar owed on their `turn` to stay in the game. However, that dollar is not credited anywhere - so it simply serves as a debt that the individual player must repay before they can begin removing money from the cup again. For example, if a player has no money and the cup holds $1 at the beginning of their `turn` (leftover from the prior player's `turn`), and the result of the at-bat is that they can remove $1 from the cup, then the player's $1 debt is cleared but they would simply leave the physical dollar in the cup. The player holding the cup would need the conditions to add up to at least $2 to take the dollar from the cup. Other players can also choose to loan dollars to people to keep the cash flowing for all, otherwise the player in debt must hope for some extra base hits and RBIs when it is their `turn`.
-
-In the reverse situation, when a player has the opportunity to remove more money from the cup than is actually in it, there is no accounting for dollars "owed" to the player. For example, if there is only $1 in the cup and the at-bat results in a double, the player can only add $1 to their wallet and effectively "miss out" on an additional $1. I think this odd method of accounting embodies the true spirit of the game by making exceptions to traditional accounting methods for the sake of friendship and baseball.
-
-
 ## Resources & Lessons Learned
 
 This is an ongoing list that I will update as the project moves along:
@@ -94,6 +84,7 @@ This is an ongoing list that I will update as the project moves along:
 
 
 ## Questions
+
 * In large applications, does _when_ you declare your variables affect the performance of the application? For example, if I have a form with a lot of inputs, I think it would make sense not to retrieve the value of those inputs (by adding event listeners) until a submission event occurs. If we have an event listener that is hanging out constantly updating the input values then I feel it could slow down the program.
 
 
@@ -114,3 +105,4 @@ As the project goes along, I am going to keep track of significant decisions mad
 <!-- In a more complete version, make the game like an online vending machine that makes you insert one dollar to play the game. It would have to mean that the game is more well-known at that point however, so people know what they're paying for -->
 <!-- Create a video that walks through your process. Granted, the video will not contain footage of you doing 90% of the coding, but it will allow you a chance to explain your process at each step along the way. Film videos of people using your prototype to get feedback from them and then iterate. Show the next part of the process and so on and so forth. So, once you get prototype v0.1 up and running you should film a progress update. You should regularly film progress updates along the way.  -->
 <!-- Ultimately, this game could evolve into some sort of tool that an online sportsbook could use as a live in-game prop betting interface. The app would pull up the batter and display the various odds of that player getting on base, out, etc. and allow users to bet in real time on exactly who was batting. This would obviously require instantaneously updating status about odds and such, but it could be really cool if executed properly. Essentially I could start my own sportsbook, which would put me under many regulations for gambling purposes... I would want to implement a feature that makes players deposit money for a one-time experience that ends after the game ends. They would not be allowed to start another game for X amount of minutes, and they have to redeposit each time. Adding friction is intentional, because we do not want to get people addicted to gambling. We want them to have a 2-3 hour experience that keeps them engaged in the baseball game, this is for the MLB more than it is the sportsbooks. Advertise this strictly inside baseball games in states where betting on sports is legal. -->
+<!-- This next version of this project would be to tie in the baseball game via API -->
