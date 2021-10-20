@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>The Baseball Dollar Game ⚾️💸</title>
+    <title>💸⚾️ The Baseball Dollar Game ⚾️💸</title>
     <link rel="stylesheet" href="./css/master.css">
     <script src="./js/setup.js" charset="utf-8" defer></script>
   </head>
@@ -46,14 +46,17 @@
             <tr>
               <th>Cup</th>
               <th>Player</th>
-              <th>Name</th>
-              <th>Budget Remaining</th>
+              <th>Budget ($)</th>
+              <th>Net ($)</th>
             </tr>
           </thead>
-          <tbody>
-
+          <tbody id="scoretable">
+            <!-- Empty table gets populated by JS -->
           </tbody>
         </table>
+        <br>
+        <hr>
+        <input type="submit" name="end" value="End Game" id="end" class="btn">
       </div>
 
       <!-- ============= Game Setup ============= -->
@@ -123,25 +126,8 @@
 
         <div>
           <div class="display">
-            <h3 id="cupheader">The "Cup"</h3>
-            <table id="displaytable">
-              <tr>
-                <td class="category">Dollar Amount:</td>
-                <td id="cup" class="atbatinfo"></td>
-              </tr>
-              <tr>
-                <td class="category">Held by:</td>
-                <td id="player" class="atbatinfo"></td>
-              </tr>
-              <tr>
-                <td class="category">Player Budget:</td>
-                <td id="bankroll" class="atbatinfo"></td>
-              </tr>
-              <tr>
-                <td class="category">On Deck:</td>
-                <td id="ondeck" class="atbatinfo"></td>
-              </tr>
-            </table>
+            <h3 id="cupheader">Cup Dollars</h3>
+            <p id="dollars"></p>
           </div>
           <h3>Result of Current At-Bat</h3>
           <div id="results">
@@ -160,7 +146,6 @@
         </div>
         <br>
         <hr>
-        <input type="submit" name="end" value="End Game" id="end" class="btn">
       </div>
     </div>
   </body>

@@ -28,12 +28,12 @@ let playersObject = {};
 
 
 // Gameplay windows
-const displayTable = document.getElementById('displaytable');
+const dollars = document.getElementById('dollars');
 const rbiWindow = document.getElementById('rbi');
 const resultWindow = document.getElementById('results');
 const results = document.getElementsByClassName('result');
-const standingsWindow = document.getElementById('standings');
 const scoreboard = document.getElementById('scoreboard');
+const scoretable = document.getElementById('scoretable'); // table to append players to
 
 
 // ====== Gameplay Variables ======
@@ -107,9 +107,9 @@ const scoring = {
     cup.amount = 0;
   },
   rbi: function(player) {
-    if(cup.amount >= Number(rbis.value)) {
-      cup.amount -= Number(rbis.value);
-      player.budget += Number(rbis.value);
+    if(cup.amount >= Number(rbis.value) * Number(ante.value)) {
+      cup.amount -= Number(rbis.value) * Number(ante.value);
+      player.budget += Number(rbis.value) * Number(ante.value);
     } else {
       player.budget += cup.amount;
       cup.amount = 0;
@@ -123,6 +123,7 @@ const scoring = {
 function Player(name, budget) {
   this.name = name;
   this.budget = budget;
+  this.startingBudget = budget; // this is used to calculate a player's net score
   this.atbats = 0;
   this.ante = function() {
     // add ante to cup
@@ -139,7 +140,7 @@ function Player(name, budget) {
 
 // Start New Game
 startBtn.addEventListener('click', function() {
-  windows[1].style.display = 'inline';
+  windows[2].style.display = 'inline';
   startBtn.style.display = 'none';
 });
 
@@ -166,7 +167,7 @@ subBtn.addEventListener('click', function() {
   }
 });
 
-// Submit Players
+// Edit Players
 nextBtn.addEventListener('click', function() {
   // grab the current values in the player table
   // I want to grab these "live" meaning that the variables aren't created until someone clicks the button
@@ -181,9 +182,22 @@ nextBtn.addEventListener('click', function() {
     }
   }
 
-  // if loop is successful, create all players with constuctor function
+  // if validation is successful, create all players with constuctor function
   for(let i = 0 ; i < players.length ; i++) {
     playersObject[i + 1] = new Player(players[i].value, budgets[i].value);
+  }
+
+  // loop through the players object to create the scoreboard table
+  for(let i = 1 ; i < Object.keys(playersObject).length + 1; i++) {
+    let newRow = scoretable.insertRow(-1);
+    let rowContent = ['', playersObject[i].name, playersObject[i].budget, playersObject[i].budget - playersObject[i].startingBudget];
+    // loop inside a loop
+    // loops through the content to create a new cell for each in the new row
+    for(let j=0 ; j < rowContent.length ; j++) {
+      let newCell = newRow.insertCell(j);
+      let newText = document.createTextNode(rowContent[j]);
+      newCell.appendChild(newText);
+    }
   }
 
   // update the displays
@@ -202,7 +216,7 @@ for(let i = 0 ; i < controlBtns.length ; i++) {
 
 // Begin Game
 beginBtn.addEventListener('click', function() {
-
+  // Validation
   if(ante.value < 1) {
     return alert('You need to wager at least $1 to play!');
   }
@@ -214,8 +228,10 @@ beginBtn.addEventListener('click', function() {
   updateDisplay();
 
   // Hide setup, display gameplay
-  windows[1].style.display = 'none';
-  windows[2].style.display = 'inline';
+  windows[0].style.display = 'none'; // 'HOW TO PLAY'
+  windows[1].style.display = 'inline'; // 'SCOREBOARD'
+  windows[2].style.display = 'none';
+  windows[3].style.display = 'inline';
 });
 
 
@@ -224,15 +240,26 @@ beginBtn.addEventListener('click', function() {
 // These are repeated actions that happen any time one of the buttons is clicked on the interface
 
 function updateDisplay() {
-  // Fill in the display on the next screen
+  // PLAY BALL Display
   // dollars in the cup
-  displayTable.rows[0].cells[1].textContent = cup.amount;
-  // person holding the cup
-  displayTable.rows[1].cells[1].textContent = playersObject[cup.index].name;
-  // budget of person holding the cup
-  displayTable.rows[2].cells[1].textContent = playersObject[cup.index].budget;
-  // person on deck
-  displayTable.rows[3].cells[1].textContent = playersObject[cup.ondeck].name;
+  dollars.textContent = '$' + cup.amount;
+
+  // SCOREBOARD display
+  // loop through all scoretable rows to update values
+  for(let i = 0 ; i < scoretable.rows.length ; i++) {
+    // make ID blank
+    scoretable.rows[i].id = '';
+    // make CUP column blank
+    scoretable.rows[i].cells[0].textContent = '';
+    // update budget
+    scoretable.rows[i].cells[2].textContent = playersObject[i + 1].budget;
+    // update net
+    scoretable.rows[i].cells[3].textContent = playersObject[i + 1].budget - playersObject[i + 1].startingBudget;
+  }
+
+  // give cup icon to person holding cup & highlight that row
+  scoretable.rows[cup.index - 1].id = 'hascup';
+  scoretable.rows[cup.index - 1].cells[0].textContent = '🥤';
 }
 
 function rbiCheck() {
@@ -282,7 +309,7 @@ homerun.addEventListener('click', function() {
   updateDisplay();
 });
 
-// pass the cup
+// pass the cup (THIS BUTTON APPEARS DURING THE RBI CHECK)
 passBtn.addEventListener('click', function() {
   scoring.rbi(playersObject[cup.index]);
   rbis.value = 0;
@@ -295,18 +322,15 @@ passBtn.addEventListener('click', function() {
   resultWindow.style.display = 'flex';
 });
 
-// Check Scoreboard
-scoreboard.addEventListener('click', function() {
-  // hide player table AND results
-});
-
 // End Game
 endBtn.addEventListener('click', function() {
   let sure = prompt('Are you sure? Enter Y to end game, or N to keep playing.');
   if(sure.toLowerCase() === 'y') {
-    // hide setup and gameplay boxes
+    // hide all windows except how to play
+    windows[0].style.display = 'inline';
     windows[1].style.display = 'none';
     windows[2].style.display = 'none';
+    windows[3].style.display = 'none';
 
     // Turn start btn on in 'How to Play'
     startBtn.style.display = 'block';
@@ -325,6 +349,11 @@ endBtn.addEventListener('click', function() {
     // delete any excess rows in player table, starting with 2 players each time
     while(playerTable.rows.length > 2) {
       playerTable.deleteRow(-1);
+    }
+
+    // delete excess rows in the scoreboard table as well
+    while(scoretable.rows.length > 0) {
+      scoretable.deleteRow(-1);
     }
 
     // *AFTER the while loop, reset the values of the table to ''

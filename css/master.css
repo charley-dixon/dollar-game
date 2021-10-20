@@ -4,26 +4,6 @@
   src: url("./../fonts/Rampart_One/RampartOne-Regular.ttf") format("truetype")
 }
 
-
-
-/* ============= GAME WINDOWS ============= */
-#scoreboard {
-  /* display: none; */
-}
-
-#setup {
-  display: none;
-}
-
-#gameplay {
-  display: none;
-}
-
-#anteContainer {
-  display: none;
-}
-
-
 /* ============= Defaults ============= */
 body {
   margin: 0;
@@ -93,6 +73,8 @@ p {
   text-align: justify;
 }
 
+
+/* =========== [1] HOW TO PLAY =========== */
 .caveat {
   font-size: 0.8rem;
   margin: 0;
@@ -120,15 +102,49 @@ p {
 }
 
 #end {
-  background-color: red;
+  background-color: gray;
 }
 
 #end:hover {
-  background-color: darkred;
+  background-color: red;
 }
 
 
-/* --------- Game Setup --------- */
+/* =========== [2] SCOREBOARD =========== */
+/* Initial display is nothing */
+#scoreboard {
+  display: none;
+}
+
+#scoreboard table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  font-size: 1.2rem;
+}
+
+#scoreboard th {
+  width: 25%;
+  padding: 1rem 0;
+  background-color: darkgreen;
+  color: white;
+}
+
+#scoreboard td {
+  padding: 0.5rem 0;
+}
+
+/* Highlight the row that has the cup */
+#hascup {
+  background-color: #fffdd0;
+}
+
+/* =========== [3] GAME SETUP =========== */
+
+/* Initial Display turned is hidden */
+#setup {
+  display: none;
+}
 
 .input {
   display: flex;
@@ -171,7 +187,7 @@ input {
   background-color: darkgrey;
 }
 
-/* ====== Players Table ====== */
+/* ====== [3] Players Table ====== */
 /* Add/Subtract Controls */
 .players {
   display: flex;
@@ -189,11 +205,13 @@ input {
   cursor: pointer;
 }
 
+/* Change color to red hovering over subtract button */
 .players input:nth-child(1):hover {
   background-color: darkred;
   color: white;
 }
 
+/* Change color to green hovering over add button */
 .players input:nth-child(2):hover {
   background-color: darkgreen;
   color: white;
@@ -209,16 +227,22 @@ input {
   padding: 1rem 0;
 }
 
-th:first-child {
+/* Going to set the widths of the 3 columns in the player adding flow */
+#tablePlayers th:first-child {
   width: 20%;
 }
 
-th:nth-child(2) {
+#tablePlayers th:nth-child(2) {
   width: 60%;
 }
 
-th:nth-child(3) {
+#tablePlayers th:nth-child(3) {
   width: 20%;
+}
+
+/* Ante is hidden initially, and selected after players are entered */
+#anteContainer {
+  display: none;
 }
 
 #begin {
@@ -226,16 +250,18 @@ th:nth-child(3) {
 }
 
 
-/* ===================== GAMEPLAY ===================== */
-.display {
-  background-color: darkgreen;
-  color: white;
-  padding: 0.5rem 1rem;
+/* ===================== [4] GAMEPLAY ===================== */
+
+/* Initial display is hidden */
+#gameplay {
+  display: none;
 }
 
-#displaytable {
-  width: 100%;
-  border-spacing: 2rem 0.5rem;
+
+.display {
+  background-color: darkgreen;
+  padding: 0.5rem 1rem;
+  color: white;
 }
 
 #cupheader {
@@ -245,16 +271,10 @@ th:nth-child(3) {
   margin: 0;
 }
 
-#displaytable .category {
-  text-align: right;
-  width: 10%;
-}
-
-.atbatinfo {
-  background-color: #fffdd0;
-  width: 10%;
-  color: black;
+#dollars {
+  font-size: 5rem;
   text-align: center;
+  margin: 0.2rem auto;
 }
 
 #results {
@@ -278,7 +298,7 @@ th:nth-child(3) {
   margin-top: 0.3rem;
 }
 
-/* RBI Window; initially hidden until triggered by an at-bat result */
+/* [4] RBI Window; initially hidden until triggered by an at-bat result */
 #rbi {
   display: none;
 }
@@ -289,8 +309,4 @@ th:nth-child(3) {
   /* padding: 1rem; */
   margin: 0 auto;
   display: block;
-}
-
-#standings {
-  display: none;
 }
